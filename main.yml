@@ -1,11 +1,29 @@
-- hosts: web
-  become: true
-  tasks:
-    - import_tasks: tasks/nginx.yml
-  handlers:
-    - import_tasks: handlers/nginx.yml
+
 
 - hosts: web
   become: true
   tasks:
+    - import_tasks: tasks/Update.yml
+    - import_tasks: files/SSL/createssl.yml
+      vars:
+        domain_name: "sulav.com"
+
+
+- hosts: web
+  become: true
+  tasks:
+    
+    - import_tasks: tasks/createdirectory.yml
     - import_tasks: tasks/copy-website.yml
+    - import_tasks: tasks/SSL.yml
+
+- hosts: web
+  become: true
+  tasks:
+    - import_tasks: handlers/nginx.yml
+    # - import_tasks: tasks/userssh.yml
+
+
+
+
+

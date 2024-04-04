@@ -1,0 +1,10 @@
+
+
+# Generate SSL key locally
+- name: Generate SSL key locally
+  vars:
+    domain: "34.207.215.186"
+  become: true
+  local_action:
+    module: command
+    cmd: sudo -u sulav openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout {{ domain }}.key -out {{ domain }}.crt -subj "/CN=sulav.com"

@@ -1,0 +1,9 @@
+- name: Ensure directory exists for private key
+  file:
+    path: '/etc/ssl/prt'
+    state: directory
+
+- name: Ensure directory exists for certificate
+  file:
+    path: '/etc/ssl/certs'
+    state: directory

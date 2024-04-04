@@ -1,4 +1,11 @@
-- name: Copy index.html
-  copy:
-    src: files/index.html
-    dest: '/var/www/html/index.html'
+# tasks/copy-website.yml
+
+- name: Copy website1
+  synchronize:
+    src: files/website1
+    dest: '/var/www/html/'
+
+- name: Copy website2
+  synchronize:
+    src: files/website2
+    dest: "/var/www/html"
